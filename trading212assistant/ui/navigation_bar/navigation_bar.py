@@ -1,5 +1,6 @@
-from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QHBoxLayout, QScrollArea, QWidget
+from PySide6.QtWidgets import QHBoxLayout, QWidget
+
+from .navigation_buttons import NavigationButtons
 
 
 class NavigationBar(QWidget):
@@ -8,3 +9,6 @@ class NavigationBar(QWidget):
         super().__init__(parent)
 
         self._layout: QHBoxLayout = QHBoxLayout(self)
+
+        self._navigation_buttons: NavigationButtons = NavigationButtons(self)
+        self._layout.addWidget(self._navigation_buttons)
