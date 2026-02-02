@@ -20,8 +20,6 @@ class MainWindow(QMainWindow):
         self._build_ui()
 
     def _build_ui(self):
-        # TODO: Replace these implementations of the main content and navigation bar with QWidget subclasses for better
-        #  encapsulation.
         self.main_content: QStackedWidget = QStackedWidget(self._central_widget)
         self._central_layout.addWidget(self.main_content)
 
