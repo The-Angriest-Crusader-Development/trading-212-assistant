@@ -1,4 +1,4 @@
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QSize
 from PySide6.QtWidgets import (
     QHBoxLayout,
     QPushButton,
@@ -8,13 +8,14 @@ from PySide6.QtWidgets import (
 
 
 class NavigationButtons(QScrollArea):
+
     def __init__(self,
                  parent: QWidget | None = None) -> None:
         super().__init__(parent)
 
-        self.setFixedHeight(self.sizeHint().height())
         self.setWidgetResizable(True)
         self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
 
         self._container: QWidget = QWidget()
         self._layout: QHBoxLayout = QHBoxLayout(self._container)
@@ -30,6 +31,12 @@ class NavigationButtons(QScrollArea):
 
         self.setWidget(self._container)
 
+        self.setFixedHeight(self.sizeHint().height())
+
+    def sizeHint(self) -> QSize:
+        if not hasattr(self, '_container'):
+            return super().sizeHint()
+
         container_height = self._container.sizeHint().height()
         horizontal_scrollbar_height = self.horizontalScrollBar().sizeHint().height()
-        self.setFixedHeight(container_height + horizontal_scrollbar_height + self.frameWidth() * 2)
+        return QSize(super().sizeHint().width(), container_height + horizontal_scrollbar_height + self.frameWidth() * 2)
