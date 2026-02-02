@@ -1,7 +1,7 @@
 from importlib.metadata import version
 from sys import argv, exit as sys_exit
 
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication
 
 from .ui import MainWindow
 
