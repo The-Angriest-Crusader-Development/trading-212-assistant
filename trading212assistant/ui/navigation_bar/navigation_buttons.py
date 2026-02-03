@@ -6,6 +6,8 @@ from PySide6.QtWidgets import (
     QWidget
 )
 
+from ..pages import PAGE_DEFINITIONS
+
 
 class NavigationButtons(QScrollArea):
     page_requested: Signal = Signal(str)
@@ -23,10 +25,10 @@ class NavigationButtons(QScrollArea):
         self._layout.setContentsMargins(0, 0, 0, 0)
         self._layout.setSpacing(0)
 
-        # These are just placeholder buttons
         self._buttons: list[QPushButton] = []
-        for i in range(20):
-            button: QPushButton = QPushButton(f"Button {i}")
+        for page_definition in PAGE_DEFINITIONS:
+            button: QPushButton = QPushButton(page_definition.display_name)
+            button.clicked.connect(lambda _, page_key=page_definition.key: self.page_requested.emit(page_key))
             self._layout.addWidget(button)
             self._buttons.append(button)
 
