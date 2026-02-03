@@ -1,4 +1,4 @@
-from PySide6.QtCore import Qt, QSize
+from PySide6.QtCore import Qt, QSize, Signal
 from PySide6.QtWidgets import (
     QHBoxLayout,
     QPushButton,
@@ -8,6 +8,7 @@ from PySide6.QtWidgets import (
 
 
 class NavigationButtons(QScrollArea):
+    page_requested: Signal = Signal(str)
 
     def __init__(self,
                  parent: QWidget | None = None) -> None:

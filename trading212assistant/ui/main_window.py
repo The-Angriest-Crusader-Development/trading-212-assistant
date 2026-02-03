@@ -22,4 +22,5 @@ class MainWindow(QMainWindow):
         self._central_layout.addWidget(self.main_content, 1)
 
         self._navigation_bar: NavigationBar = NavigationBar()
+        self._navigation_bar.page_requested.connect(self.main_content.show_page)
         self._central_layout.addWidget(self._navigation_bar, 0)
