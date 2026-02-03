@@ -1,10 +1,6 @@
-from PySide6.QtWidgets import (
-    QMainWindow,
-    QStackedWidget,
-    QVBoxLayout,
-    QWidget
-)
+from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QWidget
 
+from .main_content import MainContent
 from .navigation_bar import NavigationBar
 
 
@@ -22,7 +18,7 @@ class MainWindow(QMainWindow):
         self._build_ui()
 
     def _build_ui(self):
-        self.main_content: QStackedWidget = QStackedWidget(self._central_widget)
+        self.main_content: MainContent = MainContent()
         self._central_layout.addWidget(self.main_content, 1)
 
         self._navigation_bar: NavigationBar = NavigationBar()
