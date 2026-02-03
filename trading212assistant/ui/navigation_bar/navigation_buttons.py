@@ -27,7 +27,7 @@ class NavigationButtons(QScrollArea):
 
         self._buttons: list[QPushButton] = []
         for page_definition in PAGE_DEFINITIONS:
-            button: QPushButton = QPushButton(page_definition.display_name)
+            button: QPushButton = QPushButton(page_definition.display_name.replace('&', '&&'))
             button.clicked.connect(lambda _, page_key=page_definition.key: self.page_requested.emit(page_key))
             self._layout.addWidget(button)
             self._buttons.append(button)
