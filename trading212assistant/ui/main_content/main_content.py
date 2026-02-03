@@ -25,7 +25,11 @@ class MainContent(QStackedWidget):
 
     def show_page(self,
                   page_key: str) -> None:
-        widget: QWidget = self._page_registry[page_key]
+        widget: QWidget = self._page_registry.get(page_key)
+
+        if not widget:
+            return
+
         index: int = self.indexOf(widget)
 
         if index == -1:
