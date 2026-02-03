@@ -15,7 +15,6 @@ class PageDefinition:
     key: str
 
 
-# TODO: Create real pages for these PageDefinition factories.
 PAGE_DEFINITIONS: Sequence[PageDefinition] = (
     PageDefinition(display_name='Home', factory=HomePage, key='home'),
     PageDefinition(display_name='S&S ISA', factory=SAndSIsaPage, key='s and s isa'),
