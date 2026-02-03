@@ -29,4 +29,6 @@ class MainContent(QStackedWidget):
         index: int = self.indexOf(widget)
 
         if index == -1:
-            self.setCurrentIndex(index)
+            return
+
+        self.setCurrentIndex(index)
